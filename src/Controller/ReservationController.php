@@ -13,13 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class ReservationController
+class ReservationController extends Controller
 {
     /*
      * @Route("/")
      * @Method({"GET"})
      */
     public function index() {
-        return $this->render('templates/reserve/index.html.twig');
+        return $this->render("reserve/index.html.twig");
     }
 }
