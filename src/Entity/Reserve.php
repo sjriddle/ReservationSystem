@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Doctrine is an ORM for Symfony. This model is essentailly PHP code that
+ * is used to create database schema and tables. Doctrine can also be used
+ * to migrate/write data to the DB from the PHP application.
+ *
+ * Documentation: https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/index.html
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
