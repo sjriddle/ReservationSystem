@@ -33,12 +33,14 @@ class ReservationController extends Controller
     }
 
     /**
-     * @Route("/reserve/save")
+     * @Route("/save")
      * @Method({"GET"})
      */
     public function save() {
         $entityManager = $this->getDoctrine()->getManager();
         $reserve = new Reserve();
+        
+        // TODO: Create function to obtain name and time w/o hardcoding
         $reserve->setName('Test Name');
         $reserve->setTime(microtime());
 
