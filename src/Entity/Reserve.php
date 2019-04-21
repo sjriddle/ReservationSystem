@@ -27,17 +27,27 @@ class Reserve
     /**
      * @ORM\Column(type="text", length=100)
      */
-    private $name;
+    private $first_name;
+
+    /**
+     * @ORM\Column(type="text", length=100)
+     */
+    private $last_name;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date;
+    private $res_date;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $time;
+    private $res_time;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $admin_id;
 
 
     // Getters and Setters
@@ -46,22 +56,30 @@ class Reserve
     }
 
     public function getDate() {
-        return $this->date;
+        return $this->res_date;
     }
 
-    public function getName() {
-        return $this->name;
+    public function getFirstName() {
+        return $this->first_name;
     }
 
-    public function setName($name) {
-        $this->name = $name;
+    public function setFirstName($first_name) {
+        $this->first_name = $first_name;
+    }
+
+    public function getLastName() {
+        return $this->last_name;
+    }
+
+    public function setLastName($last_name) {
+        $this->last_name = $last_name;
     }
 
     public function getTime() {
-        return $this->time;
+        return $this->res_time;
     }
 
-    public function setTime($time) {
-        $this->time = $time;
+    public function setTime($res_time) {
+        $this->res_time = $res_time;
     }
 }
