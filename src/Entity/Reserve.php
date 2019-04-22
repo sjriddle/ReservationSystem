@@ -50,7 +50,6 @@ class Reserve
     private $admin_id;
 
 
-    // Getters and Setters
     public function getId() {
         return $this->id;
     }
