@@ -5,7 +5,7 @@
 - Make sure you have php 7.2+
 - `composer install`
 - `composer require doctrine maker`
-- `Update `.env` file ‘DATABASE_URL’ variable`
+- Update `.env` file ‘DATABASE_URL’ variable
 
 ### Create DB
 - `php bin/console doctrine:database:create`
