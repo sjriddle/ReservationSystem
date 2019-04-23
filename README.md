@@ -3,7 +3,8 @@
 ### Requirements
 - Install Composer
 - Make sure you have php 7.2+
-- `Composer require doctrine maker`
+- `composer install`
+- `composer require doctrine maker`
 - `Update `.env` file ‘DATABASE_URL’ variable`
 
 ### Create DB
