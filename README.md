@@ -22,3 +22,5 @@
 ### Run Query
 - `php bin/console doctrine:sql '{SQL STATEMENT}'`
 
+Doctrine Documentation: https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/index.html
+
