@@ -33,7 +33,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * @Route("/save")
+     * @Route("/reserve/save")
      * @Method({"GET"})
      */
     public function save() {
@@ -41,7 +41,8 @@ class ReservationController extends Controller
         $reserve = new Reserve();
         
         // TODO: Create function to obtain name and time w/o hardcoding
-        $reserve->setName('Test Name');
+        $reserve->setFirstName('FirstNameTest');
+        $reserve->setFirstName('LastNameTest');
         $reserve->setTime(microtime());
 
         $entityManager->persist($reserve);
