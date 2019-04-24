@@ -1,11 +1,12 @@
-## Doctrine ORM Usage
-
-### Requirements
+## Requirements
+- Ensure you have PHP, XAMPP, MySQL Installed
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
 - `composer require doctrine maker`
 - Update `.env` file ‘DATABASE_URL’ variable
+
+## Doctrine ORM Usage
 
 ### Create DB
 - This function will create a new database with the specification described in the .env file
