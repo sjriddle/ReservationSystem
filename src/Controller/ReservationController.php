@@ -40,7 +40,6 @@ class ReservationController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $reserve = new Reserve();
         
-        // TODO: Create function to obtain name and time w/o hardcoding
         $reserve->setFirstName('FirstNameTest');
         $reserve->setFirstName('LastNameTest');
         $reserve->setTime(microtime());
