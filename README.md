@@ -26,8 +26,7 @@
 
 ### Run Query
 - If you need to run any query, this is the syntax
-- `php bin/console doctrine:sql '{SQL STATEMENT}'`
+- `php bin/console doctrine:query:sql '{SQL STATEMENT}'`
 
-
-
+-----------------------------------
 Doctrine Documentation: https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/index.html

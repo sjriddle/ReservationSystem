@@ -40,7 +40,7 @@ class Reserve
     private $res_date;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="integer")
      */
     private $res_time;
 
@@ -48,6 +48,7 @@ class Reserve
      * @ORM\Column(type="integer")
      */
     private $admin_id;
+
 
 
     public function getId() {
