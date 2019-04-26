@@ -40,9 +40,9 @@ class ReservationController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $reserve = new Reserve();
+        
         $res_date = date('Y-m-d');
         $date = new \DateTime($res_date);
-
         $reserve->setDate($date);
         $reserve->setFirstName('FirstNameTest');
         $reserve->setLastName('LastNameTest');
