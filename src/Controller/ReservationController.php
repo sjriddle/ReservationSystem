@@ -38,11 +38,16 @@ class ReservationController extends Controller
      */
     public function save() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $reserve = new Reserve();
-        
+        $res_date = date('Y-m-d');
+        $date = new \DateTime($res_date);
+
+        $reserve->setDate($date);
         $reserve->setFirstName('FirstNameTest');
-        $reserve->setFirstName('LastNameTest');
-        $reserve->setTime(microtime());
+        $reserve->setLastName('LastNameTest');
+        $reserve->setTime(7);
+        $reserve->setAdminId(1);
 
         $entityManager->persist($reserve);
         $entityManager->flush();

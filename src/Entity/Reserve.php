@@ -59,6 +59,18 @@ class Reserve
         return $this->res_date;
     }
 
+    public function getAdminId() {
+        return $this->admin_id;
+    }
+
+    public function setAdminId($admin_id) {
+        $this->admin_id = $admin_id;
+    }
+
+    public function setDate($res_date) {
+        $this->res_date = $res_date;
+    }
+
     public function getFirstName() {
         return $this->first_name;
     }
