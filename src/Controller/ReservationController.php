@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sriddle
- * Date: 4/17/19
- * Time: 5:33 PM
- */
-
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
