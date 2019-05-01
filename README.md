@@ -1,5 +1,6 @@
 ## Requirements
 - Ensure you have PHP, XAMPP, MySQL Installed
+- For this project, you will need to go to alter the hostname for the project. I will add documentation to make this process simple. Essentially, we want to hit the endpoint `reservationsystem.tests` and have that resolve to `127.0.0.1`
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
