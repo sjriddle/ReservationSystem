@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %} Reservation {% endblock %}
+
+{% block body %}
+    <p>Reservation ID: {{ reservation.id }}</p>
+    <p>Reservation Time: {{ reservation.time }}</p>
+    <hr>
+    <a href="/">Go Back</a>
+{% endblock %}

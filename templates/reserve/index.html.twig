@@ -2,5 +2,31 @@
 {% block title %} Reservation {% endblock %}
 
 {% block body %}
-    <h1>Reservations</h1>
+    {% if reservations %}
+    <p>Reservations</p>
+        <table id="reservations" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Reservation Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.id }}</td>
+                    <td>{{ reservation.time }}</td>
+                    <td>
+                        <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
+                        <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
+                        <a href="#" class="btn btn-danger delete-reservation" data-id="{{ reservation.id }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Reservations to Display</p>
+    {% endif %}
 {% endblock %}

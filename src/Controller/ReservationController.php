@@ -10,41 +10,51 @@ use App\Entity\Reserve;
 class ReservationController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="reservation_list")
      * @Method({"GET"})
      */
     public function index() {
-        return $this->render('reserve/index.html.twig');
+        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+
+        return $this->render('reserve/index.html.twig', array('reservations' => $reservations));
     }
 
     /**
-     * @Route("/new")
-     * @Method({"GET"})
+     * @Route("/reserve/{id}", name="reservation_show")
      */
-    public function newReservation() {
-        return $this->render('reserve/new.html.twig');
+    public function show($id) {
+        $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
+        return $this->render('reserve/show.html.twig', array('reservation' => $reservation));
     }
 
-    /**
-     * @Route("/reserve/save")
-     * @Method({"GET"})
-     */
-    public function save() {
-        $entityManager = $this->getDoctrine()->getManager();
+//    /**
+//     * @Route("/new")
+//     * @Method({"GET"})
+//     */
+//    public function newReservation() {
+//        return $this->render('reserve/new.html.twig');
+//    }
 
-        $reserve = new Reserve();
-        
-        $res_date = date('Y-m-d');
-        $date = new \DateTime($res_date);
-        $reserve->setDate($date);
-        $reserve->setFirstName('FirstNameTest');
-        $reserve->setLastName('LastNameTest');
-        $reserve->setTime(7);
-        $reserve->setAdminId(1);
-
-        $entityManager->persist($reserve);
-        $entityManager->flush();
-
-        return new Response('Reservation ID: ' . $reserve->getId());
-    }
+//    /**
+//     * @Route("/reserve/save")
+//     * @Method({"GET"})
+//     */
+//    public function save() {
+//        $entityManager = $this->getDoctrine()->getManager();
+//
+//        $reserve = new Reserve();
+//
+//        $res_date = date('Y-m-d');
+//        $date = new \DateTime($res_date);
+//        $reserve->setDate($date);
+//        $reserve->setFirstName('FirstNameTest');
+//        $reserve->setLastName('LastNameTest');
+//        $reserve->setTime(7);
+//        $reserve->setAdminId(1);
+//
+//        $entityManager->persist($reserve);
+//        $entityManager->flush();
+//
+//        return new Response('Reservation ID: ' . $reserve->getId());
+//    }
 }
