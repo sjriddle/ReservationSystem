@@ -1,12 +1,12 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Reserve;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use App\Entity\Reserve;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -33,7 +33,7 @@ class ReservationController extends Controller
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, array('required' => true, 'attr' => array('class' => 'form-control')))
             ->add('last_name', TextType::class, array('required' => true, 'attr' => array('class' => 'form-control')))
-//            ->add('res_time', TimeType::class, array('required' => true, 'input' => 'timestamp', 'widget' => 'choice'))
+            ->add('res_time', TimeType::class, array('required' => true, 'input' => 'timestamp', 'widget' => 'choice'))
             ->add('save', SubmitType::class, array('label' => 'Create', 'attr' => array('class' => 'btn btn-primary mt-3')))
             ->getForm();
 
