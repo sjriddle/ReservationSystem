@@ -1,5 +1,6 @@
 ## Requirements
 - Ensure you have PHP, XAMPP, MySQL Installed
+- Clone this repository into your htdocs folder in the XAMPP application
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
