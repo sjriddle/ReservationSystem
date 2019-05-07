@@ -4,7 +4,8 @@
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
-- Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'test' with the hostname '127.0.0.1'. To get this to work, you'll have to create this user in your MySQL workbench or MySQL CLI. This will be changed in the future to a MySQL Database in cloud AWS.)
+- Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'root' with the hostname '127.0.0.1'. This will be changed in the future to a MySQL Database in cloud AWS.)
+- All you need to run to create your Database and tables is `php bin/console doctrine:migrations:migrate` since the migrations have already been created.
 
 ### Setup Virtual Host
 - Go to `C:\xampp\apache\conf\httpd.conf` and uncomment out `#Include conf/extra/httpd-vhosts.conf` on Mac it will be in the `/Applications/XAMPP/xamppfiles/etc/httpd.conf` and the line will be `#Include etc/extra/httpd-vhosts.conf`
