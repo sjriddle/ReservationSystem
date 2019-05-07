@@ -4,7 +4,6 @@
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
-- `composer require doctrine maker`
 - Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'test' with the hostname '127.0.0.1'. To get this to work, you'll have to create this user in your MySQL workbench or MySQL CLI. This will be changed in the future to a MySQL Database in cloud AWS.)
 
 ### Setup Virtual Host
