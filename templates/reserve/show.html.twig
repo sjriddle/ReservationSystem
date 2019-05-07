@@ -3,7 +3,9 @@
 
 {% block body %}
     <p>Reservation ID: {{ reservation.id }}</p>
-    <p>Reservation Time: {{ reservation.time }}</p>
+    <p>Reservation Name: {{ reservation.firstname }} {{ reservation.lastname }}</p>
+    <p>Reservation Date: {{ reservation.resdate|date('m/d/Y') }}</p>
+    <p>Reservation Time: {{ reservation.restime|date('H:i:s') }}</p>
     <hr>
     <a href="/">Go Back</a>
 {% endblock %}

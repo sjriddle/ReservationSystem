@@ -3,11 +3,12 @@
 
 {% block body %}
     {% if reservations %}
-    <p>Reservations</p>
         <table id="reservations" class="table table-striped">
             <thead>
                 <tr>
                     <th>Reservation ID</th>
+                    <th>Reservation Name</th>
+                    <th>Reservation Date</th>
                     <th>Reservation Time</th>
                     <th>Actions</th>
                 </tr>
@@ -16,7 +17,9 @@
                 {% for reservation in reservations %}
                 <tr>
                     <td>{{ reservation.id }}</td>
-                    <td>{{ reservation.time }}</td>
+                    <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
+                    <td>{{ reservation.restime|date('H:i:s') }}</td>
+                    <td>{{ reservation.resdate|date('m/d/y') }}</td>
                     <td>
                         <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
                         <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
@@ -29,4 +32,8 @@
     {% else %}
         <p>No Reservations to Display</p>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
 {% endblock %}

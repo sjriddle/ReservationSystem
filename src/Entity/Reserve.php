@@ -40,14 +40,14 @@ class Reserve
     private $res_date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="time")
      */
     private $res_time;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $admin_id;
+//    /**
+//     * @ORM\Column(type="integer")
+//     */
+//    private $admin_id;
 
 
 
@@ -55,19 +55,19 @@ class Reserve
         return $this->id;
     }
 
-    public function getDate() {
+//    public function getAdminId() {
+//        return $this->admin_id;
+//    }
+//
+//    public function setAdminId($admin_id) {
+//        $this->admin_id = $admin_id;
+//    }
+
+    public function getResDate() {
         return $this->res_date;
     }
 
-    public function getAdminId() {
-        return $this->admin_id;
-    }
-
-    public function setAdminId($admin_id) {
-        $this->admin_id = $admin_id;
-    }
-
-    public function setDate($res_date) {
+    public function setResDate($res_date) {
         $this->res_date = $res_date;
     }
 
@@ -87,11 +87,11 @@ class Reserve
         $this->last_name = $last_name;
     }
 
-    public function getTime() {
+    public function getResTime() {
         return $this->res_time;
     }
 
-    public function setTime($res_time) {
+    public function setResTime($res_time) {
         $this->res_time = $res_time;
     }
 }

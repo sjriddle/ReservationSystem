@@ -8,8 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 
 class ReservationController extends Controller
@@ -21,7 +22,9 @@ class ReservationController extends Controller
     public function index() {
         $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
 
-        return $this->render('reserve/index.html.twig', array('reservations' => $reservations));
+        return $this->render('reserve/index.html.twig', [
+            'reservations' => $reservations
+        ]);
     }
 
     /**
@@ -30,14 +33,117 @@ class ReservationController extends Controller
      */
     public function new(Request $request) {
         $reservation = new Reserve();
+
         $form = $this->createFormBuilder($reservation)
-            ->add('first_name', TextType::class, array('required' => true, 'attr' => array('class' => 'form-control')))
-            ->add('last_name', TextType::class, array('required' => true, 'attr' => array('class' => 'form-control')))
-            ->add('res_time', TimeType::class, array('required' => true, 'input' => 'timestamp', 'widget' => 'choice'))
-            ->add('save', SubmitType::class, array('label' => 'Create', 'attr' => array('class' => 'btn btn-primary mt-3')))
+            ->add('first_name', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('last_name', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('res_date', DateType::class, [
+                'label' => 'Reservation Date',
+                'required' => true,
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datetimepicker',
+                    'data-provide' => 'datetimepicker'
+                ]
+            ])
+            ->add('res_time', TimeType::class, [
+                'label' => 'Reservation Time',
+                'required' => true,
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datetimepicker'
+                ]
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Create',
+                'attr' => ['class' => 'btn btn-primary mt-3'
+                ]
+            ])
             ->getForm();
 
-        return $this->render('reserve/new.html.twig', array('form' => $form->createView()));
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $res_form = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($res_form);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('reservation_list');
+        }
+
+        return $this->render('reserve/new.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/reserve/edit/{id}", name="reservation_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function edit(Request $request, $id) {
+        $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
+
+
+        $form = $this->createFormBuilder($reservation)
+            ->add('first_name', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('last_name', TextType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('res_date', DateType::class, [
+                'label' => 'Reservation Date',
+                'required' => true,
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datetimepicker',
+                    'data-provide' => 'datetimepicker'
+                ]
+            ])
+            ->add('res_time', TimeType::class, [
+                'label' => 'Reservation Time',
+                'required' => true,
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control input-inline datetimepicker'
+                ]
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Update',
+                'attr' => ['class' => 'btn btn-primary mt-3'
+                ]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            return $this->redirectToRoute('reservation_list');
+        }
+
+        return $this->render('reserve/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     /**
@@ -45,37 +151,23 @@ class ReservationController extends Controller
      */
     public function show($id) {
         $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
-        return $this->render('reserve/show.html.twig', array('reservation' => $reservation));
+        return $this->render('reserve/show.html.twig', [
+            'reservation' => $reservation
+        ]);
     }
 
-//    /**
-//     * @Route("/new")
-//     * @Method({"GET"})
-//     */
-//    public function newReservation() {
-//        return $this->render('reserve/new.html.twig');
-//    }
+    /**
+     * @Route("/reserve/delete/{id}")
+     * @Method({"DELETE"})
+     */
+    public function delete($id) {
+        $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
 
-//    /**
-//     * @Route("/reserve/save")
-//     * @Method({"GET"})
-//     */
-//    public function save() {
-//        $entityManager = $this->getDoctrine()->getManager();
-//
-//        $reserve = new Reserve();
-//
-//        $res_date = date('Y-m-d');
-//        $date = new \DateTime($res_date);
-//        $reserve->setDate($date);
-//        $reserve->setFirstName('FirstNameTest');
-//        $reserve->setLastName('LastNameTest');
-//        $reserve->setTime(7);
-//        $reserve->setAdminId(1);
-//
-//        $entityManager->persist($reserve);
-//        $entityManager->flush();
-//
-//        return new Response('Reservation ID: ' . $reserve->getId());
-//    }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($reservation);
+        $entityManager->flush();
+
+        $response = new Response();
+        $response->send();
+    }
 }
