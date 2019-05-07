@@ -7,7 +7,8 @@
 - Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'test' with the hostname '127.0.0.1'. To get this to work, you'll have to create this user in your MySQL workbench or MySQL CLI. This will be changed in the future to a MySQL Database in cloud AWS.)
 
 ### Setup Virtual Host
-- Go to XAMPP -> etc -> extra -> httpd-vhosts.conf and add the following text to the file to create a Virtual Host: 
+- Go to `C:\xampp\apache\conf\httpd.conf` and uncomment out `#Include conf/extra/httpd-vhosts.conf` on Mac it will be in the `/Applications/XAMPP/xamppfiles/etc/httpd.conf` and the line will be `#Include etc/extra/httpd-vhosts.conf`
+- Go to `Applications/XAMPP/etc/extra/httpd-vhosts.conf` (Mac) or `C:\XAMPP\apache\conf\extra\httpd-vhosts.conf` and add the following text to the file to create a Virtual Host: 
 ```
 <VirtualHost *:80>
     DocumentRoot "/Applications/XAMPP/htdocs/reservation_system/public"
