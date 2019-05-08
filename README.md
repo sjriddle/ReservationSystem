@@ -12,7 +12,7 @@
 - Go to `Applications/XAMPP/etc/extra/httpd-vhosts.conf` (Mac) or `C:\XAMPP\apache\conf\extra\httpd-vhosts.conf` and add the following text to the file to create a Virtual Host: 
 ```
 <VirtualHost *:80>
-    DocumentRoot "/Applications/XAMPP/htdocs/reservation_system/public"
+    DocumentRoot "/Applications/XAMPP/htdocs/ReservationSystem/public"
     <Directory "/Applications/XAMPP/htdocs/">
         Allow from all
         AllowOverride All
