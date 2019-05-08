@@ -13,6 +13,12 @@
 ```
 <VirtualHost *:80>
     DocumentRoot "/Applications/XAMPP/htdocs/reservation_system/public"
+    <Directory "/Applications/XAMPP/htdocs/">
+        Allow from all
+        AllowOverride All
+        Order Allow,Deny
+          Require all granted
+    </Directory>
     ServerName reservationsystem.tests
 </VirtualHost>
 ```
