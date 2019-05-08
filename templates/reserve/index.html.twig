@@ -18,8 +18,8 @@
                 <tr>
                     <td>{{ reservation.id }}</td>
                     <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
-                    <td>{{ reservation.restime|date('H:i:s') }}</td>
                     <td>{{ reservation.resdate|date('m/d/y') }}</td>
+                    <td>{{ reservation.restime|date('H:i:s') }}</td>
                     <td>
                         <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
                         <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
