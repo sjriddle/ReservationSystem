@@ -1,11 +1,32 @@
 ## Requirements
 - Ensure you have PHP, XAMPP, MySQL Installed
-- For this project, you will need to go to alter the hostname for the project. I will add documentation to make this process simple. Essentially, we want to hit the endpoint `reservationsystem.tests` and have that resolve to `127.0.0.1`
+- Clone this repository into your htdocs folder in the XAMPP application
 - Install Composer
 - Make sure you have php 7.2+
 - `composer install`
-- `composer require doctrine maker`
-- Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'test' with the hostname '127.0.0.1'. To get this to work, you'll have to create this user in your MySQL workbench or MySQL CLI. This will be changed in the future to a MySQL Database in cloud AWS.)
+- Update `.env` file ‘DATABASE_URL’ variable (currently, this is configured for a MySQL user named 'root', with a password 'test' and the hostname '127.0.0.1'. This will be changed in the future to a MySQL Database in cloud AWS.)
+- All you need to run to create your Database and tables is `php bin/console doctrine:migrations:migrate` since the migrations have already been created.
+
+### Setup Virtual Host
+- Go to `C:\xampp\apache\conf\httpd.conf` and uncomment out `#Include conf/extra/httpd-vhosts.conf` on Mac it will be in the `/Applications/XAMPP/xamppfiles/etc/httpd.conf` and the line will be `#Include etc/extra/httpd-vhosts.conf`
+- Go to `Applications/XAMPP/etc/extra/httpd-vhosts.conf` (Mac) or `C:\XAMPP\apache\conf\extra\httpd-vhosts.conf` and add the following text to the file to create a Virtual Host: 
+```
+<VirtualHost *:80>
+    DocumentRoot "/Applications/XAMPP/htdocs/ReservationSystem/public"
+    <Directory "/Applications/XAMPP/htdocs/">
+        Allow from all
+        AllowOverride All
+        Order Allow,Deny
+          Require all granted
+    </Directory>
+    ServerName reservationsystem.tests
+</VirtualHost>
+```
+- Then go to `/etc/hosts` (Mac) or `C:\Windows\System32\drivers\etc` (Windows) and put in the following entry:
+```
+127.0.0.1 reservationsystem.tests
+```
+- Restart Apache in XAMPP
 
 ## Doctrine ORM Usage
 
