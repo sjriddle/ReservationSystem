@@ -1,3 +1,9 @@
+## How to Access (Production)
+- SSH into `student@info4430spro` using PuTTY or Ubuntu Subsystem for Windows. Use the terminal for Mac OS. If you don't have any SSH keys or don't know how to generate them, use https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html 
+- Once in the VM Command Line, run the following command `sudo service apache2 start`.
+- After the webserver is started, open up a browser and go to `http://http://10.52.2.41/ReservationSystem/public`. This should direct you to the main page of the current reservation system.
+
+
 ## Requirements
 - Ensure you have PHP, XAMPP, MySQL Installed
 - Clone this repository into your htdocs folder in the XAMPP application
