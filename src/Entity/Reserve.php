@@ -44,25 +44,10 @@ class Reserve
      */
     private $res_time;
 
-//    /**
-//     * @ORM\Column(type="integer")
-//     */
-//    private $admin_id;
-
-
-
     public function getId() {
         return $this->id;
     }
-
-//    public function getAdminId() {
-//        return $this->admin_id;
-//    }
-//
-//    public function setAdminId($admin_id) {
-//        $this->admin_id = $admin_id;
-//    }
-
+    
     public function getResDate() {
         return $this->res_date;
     }
