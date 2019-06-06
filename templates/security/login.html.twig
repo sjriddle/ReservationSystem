@@ -15,17 +15,16 @@
 
     <form action="{{ path('login') }}" method="POST">
         <div class="form-group">
-            <input type="text" name="_username" value="{{ last_username }}" placeholder="Enter Username">
+            <input type="text" name="_username" value="{{ last_username }}" placeholder="Username">
         </div>
         <div class="form-group">
-            <input type="password" name="_password" placeholder="Enter Password">
+            <input type="password" name="_password" placeholder="Password">
         </div>
         <div class="form-group">
             <input type="hidden" name="go_to" value="{{ path('index') }}"/>
             <input type="hidden" name="back_to" value="{{ path('login') }}"/>
             <button type="submit" class="btn btn-success">Login</button>
         </div>
-
     </form>
 </div>
 {% endblock %}
