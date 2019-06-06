@@ -27,7 +27,6 @@ class ReservationController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/reserve/new", name="reservation_new")
      * @Method({"GET", "POST"})
