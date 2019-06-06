@@ -12,3 +12,14 @@ if (reservations) {
     }
   });
 }
+
+if (reservations) {
+  reservations.addEventListener('click', (e) => {
+    if (e.target.className === 'btn btn-danger find-reservation') {
+      const id = e.target.getAttribute('data-id');
+      fetch(`/reserve/delete/${id}`, {
+        method: 'DELETE'
+      }).then(res => window.location.reload());
+    }
+  });
+}

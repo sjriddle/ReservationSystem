@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 
 
 class ReservationController extends Controller
@@ -160,15 +162,63 @@ class ReservationController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/reserve/find", name="reservation_find")
+     * @Method({"GET"})
+     */
+    public function find(Request $request) {
+        $reservation = new Reserve();
+        $form = $this->createFormBuilder($reservation)
+            ->add('id', IntegerType::class, [
+                'label' => 'Enter your Reservation ID',
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Find',
+                'attr' => ['class' => 'btn btn-primary mt-3'
+                ]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $res_form = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($res_form);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('reservation_edit');
+        }
+
+        return $this->render('reserve/find.html.twig', [
+            'form' => $form->createView()
+        ]);
+//
+//        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+//        return $this->render('reserve/find.html.twig', [
+//            'reservations' => $reservations
+//        ]);
+
+    }
+
 
     /**
      * @Route("/reserve/{id}", name="reservation_show")
      */
     public function show($id) {
         $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
-        return $this->render('reserve/show.html.twig', [
-            'reservation' => $reservation
-        ]);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($reservation);
+        $entityManager->flush();
+
+        $response = new Response();
+        $response->send();
     }
 
 
