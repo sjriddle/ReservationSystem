@@ -16,6 +16,8 @@ security:
             anonymous: true
 
             form_login:
+                target_path_parameter: go_to
+                failure_path_parameter: back_to
                 login_path: login
                 check_path: login
                 provider: slwc
@@ -27,5 +29,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

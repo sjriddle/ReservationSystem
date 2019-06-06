@@ -7,12 +7,23 @@
 
         <div class="collapse navbar-collapse" id="mobile-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
-                </li>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Dashboard</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a href="/reserve/new" class="nav-link">New Reservation</a>
                 </li>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li>
+                        <a href="{{ path('logout') }}" class="nav-link">Logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('login') }}" class="nav-link">Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

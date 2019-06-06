@@ -4,22 +4,28 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .error { color: red }
 </style>
 
-<div class="example-wrapper">
-    <a href="{{ path('logout') }}">Logout</a>
-    <h1>Login Page</h1>
+<div class="container">
+    <h2>Administrator Login</h2>
     {% if error %}
         <span class="error">{{ error.messageKey }}</span>
     {% endif %}
 
     <form action="{{ path('login') }}" method="POST">
-        <input type="text" name="_username" value="{{ last_username }}" placeholder="Enter Username">
-        <input type="password" name="_password">
-        <button type="submit">Login</button>
+        <div class="form-group">
+            <input type="text" name="_username" value="{{ last_username }}" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+            <input type="password" name="_password" placeholder="Enter Password">
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="go_to" value="{{ path('index') }}"/>
+            <input type="hidden" name="back_to" value="{{ path('login') }}"/>
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+
     </form>
 </div>
 {% endblock %}
