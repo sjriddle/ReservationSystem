@@ -3,7 +3,7 @@
 - Once in the VM Command Line, run the following command `sudo service apache2 start`.
 - After the webserver is started, open up a browser and go to `http://10.52.2.41`. This should direct you to the main page of the current reservation system.
 
-## Setup on Local Environment
+## Setup on Local Environment on Mac/Windows using XAMPP
 ### Requirements
 - Ensure you have PHP, XAMPP, MySQL Installed
 - Clone this repository into your htdocs folder in the XAMPP application
