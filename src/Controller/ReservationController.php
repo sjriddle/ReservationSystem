@@ -20,6 +20,7 @@ class ReservationController extends Controller
      * @Method({"GET"})
      */
     public function index() {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
 
         return $this->render('reserve/index.html.twig', [
