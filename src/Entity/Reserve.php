@@ -35,6 +35,11 @@ class Reserve
     private $last_name;
 
     /**
+     * @ORM\Column(type="text", length=100)
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $res_date;
@@ -44,24 +49,10 @@ class Reserve
      */
     private $res_time;
 
-//    /**
-//     * @ORM\Column(type="integer")
-//     */
-//    private $admin_id;
-
-
 
     public function getId() {
         return $this->id;
     }
-
-//    public function getAdminId() {
-//        return $this->admin_id;
-//    }
-//
-//    public function setAdminId($admin_id) {
-//        $this->admin_id = $admin_id;
-//    }
 
     public function getResDate() {
         return $this->res_date;
@@ -85,6 +76,14 @@ class Reserve
 
     public function setLastName($last_name) {
         $this->last_name = $last_name;
+    }
+
+    public function getEmail() {
+      return $this->email;
+    }
+
+    public function setEmail($email) {
+      $this->email = $email;
     }
 
     public function getResTime() {

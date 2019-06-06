@@ -27,6 +27,7 @@ class ReservationController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/reserve/new", name="reservation_new")
      * @Method({"GET", "POST"})
@@ -46,6 +47,12 @@ class ReservationController extends Controller
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])
+            ->add('email', TextType::class, [
+              'required' => true,
+              'attr' => [
+                'class' => 'form-control'
+              ]
             ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
@@ -88,6 +95,7 @@ class ReservationController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/reserve/edit/{id}", name="reservation_edit")
      * @Method({"GET", "POST"})
@@ -108,6 +116,12 @@ class ReservationController extends Controller
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])
+            ->add('email', TextType::class, [
+              'required' => true,
+              'attr' => [
+                'class' => 'form-control'
+              ]
             ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
@@ -146,6 +160,7 @@ class ReservationController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/reserve/{id}", name="reservation_show")
      */
@@ -155,6 +170,7 @@ class ReservationController extends Controller
             'reservation' => $reservation
         ]);
     }
+
 
     /**
      * @Route("/reserve/delete/{id}")

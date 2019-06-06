@@ -3,7 +3,8 @@
 
 {% block body %}
     <p>Reservation ID: {{ reservation.id }}</p>
-    <p>Reservation Name: {{ reservation.firstname }} {{ reservation.lastname }}</p>
+    <p>Name: {{ reservation.firstname }} {{ reservation.lastname }}</p>
+    <p>Email: {{ reservation.email }}</p>
     <p>Reservation Date: {{ reservation.resdate|date('m/d/Y') }}</p>
     <p>Reservation Time: {{ reservation.restime|date('H:i:s') }}</p>
     <hr>
