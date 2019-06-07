@@ -178,13 +178,9 @@ class ReservationController extends Controller
      */
     public function show($id) {
         $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($reservation);
-        $entityManager->flush();
-
-        $response = new Response();
-        $response->send();
+        return $this->render('reserve/show.html.twig', [
+            'reservation' => $reservation
+        ]);
     }
 
 
