@@ -105,7 +105,6 @@ class ReservationController extends Controller
     public function edit(Request $request, $id) {
         $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
 
-
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
                 'required' => true,
