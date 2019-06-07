@@ -12,3 +12,8 @@ if (reservations) {
     }
   });
 }
+
+function findId() {
+  var id = document.getElementById('find_id').value;
+  window.location = `http://uvu-reservation.test/reserve/edit/${id}`;
+}

@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 
 
 class ReservationController extends Controller
@@ -73,7 +75,7 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Create',
-                'attr' => ['class' => 'btn btn-primary mt-3'
+                'attr' => ['class' => 'btn btn-success mt-3'
                 ]
             ])
             ->getForm();
@@ -141,7 +143,7 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Update',
-                'attr' => ['class' => 'btn btn-primary mt-3'
+                'attr' => ['class' => 'btn btn-success mt-3'
                 ]
             ])
             ->getForm();
@@ -156,6 +158,17 @@ class ReservationController extends Controller
 
         return $this->render('reserve/edit.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/reserve/find", name="reservation_find")
+     * @Method({"GET"})
+     */
+    public function find() {
+        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+        return $this->render('reserve/find.html.twig', [
+            'reservations' => $reservations
         ]);
     }
 
