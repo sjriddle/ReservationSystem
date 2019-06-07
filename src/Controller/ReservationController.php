@@ -155,22 +155,11 @@ class ReservationController extends Controller
         if($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            return $this->redirectToRoute('reservation_success');
+            return $this->redirect('/reserve/'.$id);
         }
 
         return $this->render('reserve/edit.html.twig', [
             'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/reserve/success/{id}", name="reservation_success")
-     * @Method({"GET"})
-     */
-    public function success($id) {
-        $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
-        return $this->render('reserve/success.html.twig', [
-            'reservation' => $reservation
         ]);
     }
 
