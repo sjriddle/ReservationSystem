@@ -75,7 +75,7 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Create',
-                'attr' => ['class' => 'btn btn-primary mt-3'
+                'attr' => ['class' => 'btn btn-success mt-3'
                 ]
             ])
             ->getForm();
@@ -143,7 +143,7 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Update',
-                'attr' => ['class' => 'btn btn-primary mt-3'
+                'attr' => ['class' => 'btn btn-success mt-3'
                 ]
             ])
             ->getForm();
@@ -165,44 +165,11 @@ class ReservationController extends Controller
      * @Route("/reserve/find", name="reservation_find")
      * @Method({"GET"})
      */
-    public function find(Request $request) {
-        $reservation = new Reserve();
-        $form = $this->createFormBuilder($reservation)
-            ->add('id', IntegerType::class, [
-                'label' => 'Enter your Reservation ID',
-                'required' => true,
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Find',
-                'attr' => ['class' => 'btn btn-primary mt-3'
-                ]
-            ])
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-            $res_form = $form->getData();
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($res_form);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('reservation_edit');
-        }
-
+    public function find() {
+        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
         return $this->render('reserve/find.html.twig', [
-            'form' => $form->createView()
+            'reservations' => $reservations
         ]);
-//
-//        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
-//        return $this->render('reserve/find.html.twig', [
-//            'reservations' => $reservations
-//        ]);
-
     }
 
 
