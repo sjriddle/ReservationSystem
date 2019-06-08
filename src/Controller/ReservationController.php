@@ -105,6 +105,9 @@ class ReservationController extends Controller
      */
     public function edit(Request $request, $id) {
         $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
+        if (!$reservation) {
+            return $this->redirectToRoute('reservation_error');
+        }
 
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
@@ -160,6 +163,17 @@ class ReservationController extends Controller
 
         return $this->render('reserve/edit.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/reserve/error", name="reservation_error")
+     * @Method({"GET"})
+     */
+    public function error() {
+        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+        return $this->render('reserve/error.html.twig', [
+            'reservations' => $reservations
         ]);
     }
 
