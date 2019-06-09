@@ -75,7 +75,9 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Create',
-                'attr' => ['class' => 'btn btn-success mt-3'
+                'attr' => [
+                  'class' => 'btn btn-primary mt-3',
+                  'style' => 'background-color: #275D38 !important; color: #FFFFFF;'
                 ]
             ])
             ->getForm();
@@ -143,7 +145,9 @@ class ReservationController extends Controller
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Update',
-                'attr' => ['class' => 'btn btn-success mt-3'
+                'attr' => [
+                  'class' => 'btn btn-primary mt-3',
+                  'style' => 'background-color: #275D38 !important; color: #FFFFFF;'
                 ]
             ])
             ->getForm();
