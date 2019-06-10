@@ -15,5 +15,7 @@ if (reservations) {
 
 function findId() {
   var id = document.getElementById('find_id').value;
-  window.location = `http://uvu-reservation.test/reserve/edit/${id}`;
+  fetch(`/reserve/edit/${id}`, {
+    method: 'GET'
+  }).then(res => window.location = `/reserve/edit/${id}`);
 }
