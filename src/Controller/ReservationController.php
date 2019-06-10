@@ -76,7 +76,7 @@ class ReservationController extends Controller
             ->add('save', SubmitType::class, [
                 'label' => 'Create',
                 'attr' => [
-                    'class' => 'btn btn-success mt-3'
+                  'class' => 'btn uvu-btn mt-3'
                 ]
             ])
             ->getForm();
@@ -148,7 +148,7 @@ class ReservationController extends Controller
             ->add('save', SubmitType::class, [
                 'label' => 'Update',
                 'attr' => [
-                    'class' => 'btn btn-success mt-3'
+                  'class' => 'btn uvu-btn mt-3'
                 ]
             ])
             ->getForm();
