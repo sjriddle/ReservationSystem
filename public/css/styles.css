@@ -22,3 +22,10 @@ input::-webkit-inner-spin-button {
 #uvu-nav {
     background-color: #275D38 !important;
 }
+
+img#uvu-logo {
+    height: 75px;
+    width: 150px;
+    float: left;
+    position: relative;
+}
