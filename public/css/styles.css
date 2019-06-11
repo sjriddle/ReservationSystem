@@ -23,7 +23,7 @@ input::-webkit-inner-spin-button {
     background-color: #275D38 !important;
 }
 
-img#uvu-logo {
+#uvu-logo {
     height: 75px;
     width: 150px;
     float: left;
