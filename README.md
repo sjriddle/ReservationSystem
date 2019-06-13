@@ -52,6 +52,10 @@
 - This runs the created migration in the previous step
 - `php bin/console doctrine:migrations:migrate`
 
+### Run Fixture
+- This is used to migrate the user data to the DB
+`php bin/console doctrine:fixtures:load`
+
 ### Run Query
 - If you need to run any query, this is the syntax
 - `php bin/console doctrine:query:sql '{SQL STATEMENT}'`
