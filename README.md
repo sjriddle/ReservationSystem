@@ -54,7 +54,7 @@
 
 ### Run Fixture
 - This is used to migrate the user data to the DB
-`php bin/console doctrine:fixtures:load`
+- `php bin/console doctrine:fixtures:load`
 
 ### Run Query
 - If you need to run any query, this is the syntax
