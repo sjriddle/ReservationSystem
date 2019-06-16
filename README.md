@@ -37,7 +37,7 @@
 ## Setup on Linux Environment w/ Apache
 - Ensure Apache2 is install by running `sudo apt install apache2`
 - Clone the ReservationSystem repo in the `/var/www/` folder location. 
-- Alter the Apache2 sites-available file `/etc/apache2/sites-available` and alter the directory structure to match the following:
+- Alter the Apache2 sites-available file `/etc/apache2/sites-available/res-default.conf` and alter the directory structure to match the following:
  ```
  <Directory /var/www/ReservationSystem/public>
         AllowOverride All
