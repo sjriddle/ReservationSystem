@@ -19,6 +19,15 @@ class ReserveRepository extends ServiceEntityRepository
         parent::__construct($registry, Reserve::class);
     }
 
+    public function getRecentId()
+    {
+        $qb = $this->createQueryBuilder();
+        return $qb->select('id')
+            ->from('reserve', 'u')
+            ->orderBy('u.id', 'DESC')
+            ->limit(1);
+    }
+
     // /**
     //  * @return Reserve[] Returns an array of Reserve objects
     //  */

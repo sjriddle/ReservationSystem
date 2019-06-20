@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use App\Repository\ReserveRepository;
+
+
 
 
 
@@ -163,6 +166,19 @@ class ReservationController extends Controller
 
         return $this->render('reserve/edit.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/reserve/{id}", name="reservation_show")
+     * @ORM\Entity(repositoryClass="App\Entity\ReserveRepository")
+     */
+    public function findRecentId() {
+        $recent_id = $this->getRecentId();
+        $reservations = $this->getDoctrine()->getRepository(Reserve::class);
+        $reservation = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
+        return $this->render('reserve/show.html.twig', [
+            'reservation' => $reservation
         ]);
     }
 
