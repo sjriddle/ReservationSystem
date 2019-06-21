@@ -7,6 +7,5 @@
     <h4>Email: {{ reservations.email }}</h4>
     <h4>Reservation Date: {{ reservations.resdate|date('m/d/Y') }}</h4>
     <h4>Reservation Time: {{ reservations.restime|date('H:i:s') }}</h4>
-    <hr>
     <a href="10.52.2.41/reserve/edit/{{ reservations.id }}">Edit this reservation</a>
 {% endblock %}
