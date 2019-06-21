@@ -35,7 +35,7 @@ class ReservationController extends Controller
      * @Route("/reserve/new", name="reservation_new")
      * @Method({"GET", "POST"})
      */
-    public function new(Request $request) {
+    public function new(Request $request, \Swift_Mailer $mailer) {
         $reservation = new Reserve();
 
         $form = $this->createFormBuilder($reservation)
@@ -92,6 +92,15 @@ class ReservationController extends Controller
             $entityManager->flush();
 
             $id = $res_form->getId();
+            $email = $res_form->getEmail();
+            $reservations = $this->getDoctrine()->getRepository(Reserve::class)->find($id);
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('uvu.reservation@gmail.com')
+                ->setTo($email)
+                ->setBody($this->renderView('emails/confirmation.html.twig',
+                    ['reservations' => $reservations]), 'text/html');
+            $mailer->send($message);
 
             return $this->redirect('/reserve/'.$id);
         }
