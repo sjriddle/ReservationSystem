@@ -9,25 +9,27 @@
                     <th>Reservation ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Reservation Date</th>
-                    <th>Reservation Time</th>
+                    <th>Date</th>
+                    <th>Time</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reservation in reservations %}
-                <tr>
-                    <td>{{ reservation.id }}</td>
-                    <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
-                    <td>{{ reservation.email }}</td>
-                    <td>{{ reservation.resdate|date('m/d/y') }}</td>
-                    <td>{{ reservation.restime|date('H:i:s') }}</td>
-                    <td>
-                        <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
-                        <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
-                        <a href="#" class="btn btn-danger delete-reservation" data-id="{{ reservation.id }}">Delete</a>
-                    </td>
-                </tr>
+                    {% if date()|date('m/d/y') < reservation.resdate|date('m/d/y') %}
+                        <tr>
+                            <td>{{ reservation.id }}</td>
+                            <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
+                            <td>{{ reservation.email }}</td>
+                            <td>{{ reservation.resdate|date('m/d/y') }}</td>
+                            <td>{{ reservation.restime|date('H:i:s') }}</td>
+                            <td>
+                                <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
+                                <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
+                                <a href="#" class="btn btn-danger delete-reservation" data-id="{{ reservation.id }}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
