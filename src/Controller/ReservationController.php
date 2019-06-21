@@ -90,7 +90,9 @@ class ReservationController extends Controller
             $entityManager->persist($res_form);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reservation_list');
+            $id = $res_form->getId();
+
+            return $this->redirect('/reserve/'.$id);
         }
 
         return $this->render('reserve/new.html.twig', [
