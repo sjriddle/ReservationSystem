@@ -30,6 +30,7 @@ class ReservationController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/reserve/new", name="reservation_new")
      * @Method({"GET", "POST"})
@@ -167,6 +168,7 @@ class ReservationController extends Controller
             'form' => $form->createView()
         ]);
     }
+
 
     /**
      * @Route("/reserve/error", name="reservation_error")
