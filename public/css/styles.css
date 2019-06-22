@@ -7,6 +7,10 @@ html, body {
     height: 100%;
 }
 
+#contact-margin {
+    margin-left: 100px;
+}
+
 #wrap {
     height: 100vh;
 }
@@ -80,4 +84,9 @@ html, body {
 
 .contact_lbl {
     color: #78be20;
+}
+
+#uvu-img {
+    height: 200px;
+    width: 200px;
 }
