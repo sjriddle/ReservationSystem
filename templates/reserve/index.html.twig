@@ -9,6 +9,7 @@
                     <th>Reservation ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Number of Guests</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Actions</th>
@@ -21,6 +22,7 @@
                             <td>{{ reservation.id }}</td>
                             <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
                             <td>{{ reservation.email }}</td>
+                            <td>{{ reservation.guest_count }}</td>
                             <td>{{ reservation.resdate|date('m/d/y') }}</td>
                             <td>{{ reservation.restime|date('H:i:s') }}</td>
                             <td>

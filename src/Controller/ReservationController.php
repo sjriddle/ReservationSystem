@@ -57,6 +57,12 @@ class ReservationController extends Controller
                 'class' => 'form-control'
               ]
             ])
+            ->add('guest_count', IntegerType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
                 'required' => true,
@@ -139,6 +145,12 @@ class ReservationController extends Controller
               'attr' => [
                 'class' => 'form-control'
               ]
+            ])
+            ->add('guest_count', IntegerType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
