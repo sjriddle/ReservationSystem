@@ -2,14 +2,37 @@
 {% block title %} New Reservation {% endblock %}
 
 {% block body %}
-    <div class="form-group col-md-12">
-        <div class="col-md-6">
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
     </div>
+    <div class="col">
+        <h2>Contact Us</h2>
+        <hr>
+
+        <h4 class="contact_lbl"><strong>Hours:</strong></h4>
+        <p class="padding-left-30">Monday - Thursday: 12:00 PM - 10:00 PM</p>
+        <p class="padding-left-30">Friday &amp; Saturday: 12:00 PM - 11:00 PM</p>
+
+        <h4 class="contact_lbl"><strong>Location:</strong></h4>
+        <p class="padding-left-30">Bowling 1st Floor, Room SL-117</p>
+        <p class="padding-left-30">Gaming 1st Floor, Rooms SL-117 d-g</p>
+
+        <h4 class="contact_lbl"><strong>Phone:</strong></h4>
+        <p class="padding-left-30">To reserve the whole gaming center, call 801-863-5550</p>
+    </div>
+  </div>
+</div>
+
+
 
     <br>
     <a href="/reserve/find">Edit existing reservation</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
 {% endblock %}

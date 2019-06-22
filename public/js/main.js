@@ -19,3 +19,9 @@ function findId() {
     method: 'GET'
   }).then(res => window.location = `/reserve/edit/${id}`);
 }
+
+$('#form_res_time').datetimepicker({
+  format : 'DD/MM/YYYY hh:mm A'
+});
+
+document.getElementById('form_res_date').value = Date();

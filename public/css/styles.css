@@ -3,10 +3,39 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+html, body {
+    height: 100%;
+}
 
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow:auto;
+    padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+    position: relative;
+    margin-top: -150px; /* negative value of footer height */
+    height: 150px;
+    clear:both;
+    padding-top:20px;
+}
+
+#uvu-footer {
+    background-color: #275D38 !important;
+    color: #ffffff; !important;
+}
+
+#uvu-link {
+    color: #ffffff;
+}
 #form_save {
     background-color: #275D38 !important;
-    color: #FFFFFF;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 #uvu-btn {
@@ -28,4 +57,32 @@ input::-webkit-inner-spin-button {
     width: 150px;
     float: left;
     position: relative;
+}
+
+#form_first_name {
+    margin-bottom: 15px;
+}
+
+#form_last_name {
+    margin-bottom: 15px;
+}
+
+#form_email {
+    margin-bottom: 15px;
+}
+
+#form_guest_count {
+    margin-bottom: 15px;
+}
+
+#form_res_date {
+    margin-bottom: 15px;
+}
+
+#form_res_time {
+    margin-bottom: 15px;
+}
+
+.contact_lbl {
+    color: #78be20;
 }

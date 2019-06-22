@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block title %} Find Reservation {% endblock %}
 {% block body %}
+    <div id="wrap">
+    <div id="main" class="container clear-top">
     <label>Enter your Reservation ID</label>
-
     <div class="form-group">
         <input id="find_id" type="number" name="find_id" placeholder="Reservation ID">
     </div>
     <div class="form-group">
         <button id="uvu-btn" type="submit" onclick="findId()" name="find_submit" class="btn uvu-btn">Find</button>
-    </div>
+    </div></div></div>
 {% endblock %}
 {% block javascripts %}
     <script src="/js/main.js"></script>

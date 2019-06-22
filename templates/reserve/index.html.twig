@@ -22,9 +22,9 @@
                             <td>{{ reservation.id }}</td>
                             <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
                             <td>{{ reservation.email }}</td>
-                            <td>{{ reservation.guest_count }}</td>
+                            <td>{{ reservation.guestcount }}</td>
                             <td>{{ reservation.resdate|date('m/d/y') }}</td>
-                            <td>{{ reservation.restime|date('H:i:s') }}</td>
+                            <td>{{ reservation.restime|date('h:i A')}}</td>
                             <td>
                                 <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
                                 <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
