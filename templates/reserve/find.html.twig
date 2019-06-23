@@ -1,12 +1,34 @@
 {% extends 'base.html.twig' %}
 {% block title %} Find Reservation {% endblock %}
 {% block body %}
-    <label>Enter your Reservation ID</label>
-    <div class="form-group">
-        <input id="find_id" type="number" name="find_id" placeholder="Enter ID">
-    </div>
-    <div class="form-group">
-        <button id="uvu-btn" type="submit" onclick="findId()" name="find_submit" class="btn uvu-btn">Find</button>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label>Enter your Reservation ID</label>
+                <div class="form-group">
+                    <input id="find_id" type="number" name="find_id" placeholder="Enter ID">
+                </div>
+                <div class="form-group">
+                    <button id="uvu-btn" type="submit" onclick="findId()" name="find_submit" class="btn uvu-btn">Find</button>
+                </div>
+            </div>
+            <div id="contact-margin" class="col">
+                <h2>Contact Us</h2>
+                <hr>
+
+                <h4 class="contact_lbl"><strong>Hours:</strong></h4>
+                <p class="padding-left-30">Monday - Thursday: 12:00 PM - 10:00 PM</p>
+                <p class="padding-left-30">Friday &amp; Saturday: 12:00 PM - 11:00 PM</p>
+
+                <h4 class="contact_lbl"><strong>Location:</strong></h4>
+                <p class="padding-left-30">Bowling 1st Floor, Room SL-117</p>
+                <p class="padding-left-30">Gaming 1st Floor, Rooms SL-117 d-g</p>
+
+                <h4 class="contact_lbl"><strong>Phone:</strong></h4>
+                <p class="padding-left-30">To reserve the whole gaming center, call 801-863-5550</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}
