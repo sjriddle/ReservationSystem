@@ -17,21 +17,19 @@
             </thead>
             <tbody>
                 {% for reservation in reservations %}
-                    {% if date()|date('m/d/y') < reservation.resdate|date('m/d/y') %}
-                        <tr>
-                            <td>{{ reservation.id }}</td>
-                            <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
-                            <td>{{ reservation.email }}</td>
-                            <td>{{ reservation.guestcount }}</td>
-                            <td>{{ reservation.resdate|date('m/d/y') }}</td>
-                            <td>{{ reservation.restime|date('h:i A')}}</td>
-                            <td>
-                                <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
-                                <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
-                                <a href="#" class="btn btn-danger delete-reservation" data-id="{{ reservation.id }}">Delete</a>
-                            </td>
-                        </tr>
-                    {% endif %}
+                    <tr>
+                        <td>{{ reservation.id }}</td>
+                        <td>{{ reservation.firstname }} {{ reservation.lastname }}</td>
+                        <td>{{ reservation.email }}</td>
+                        <td>{{ reservation.guestcount }}</td>
+                        <td>{{ reservation.resdate|date('m/d/y') }}</td>
+                        <td>{{ reservation.restime|date('h:i A')}}</td>
+                        <td>
+                            <a href="/reserve/{{ reservation.id }}" class="btn btn-dark">Show</a>
+                            <a href="/reserve/edit/{{ reservation.id }}" class="btn btn-light">Edit</a>
+                            <a href="#" class="btn btn-danger delete-reservation" data-id="{{ reservation.id }}">Delete</a>
+                        </td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
