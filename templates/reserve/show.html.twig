@@ -12,4 +12,6 @@
     <li>Reservation Time: {{ reservation.restime|date('h:i A') }}</li>
     <hr>
     <a href="/">Go Back</a>
+    <br>
+    <a href="/reserve/edit/{{ reservation.id }}">Edit Reservation</a>
 {% endblock %}
