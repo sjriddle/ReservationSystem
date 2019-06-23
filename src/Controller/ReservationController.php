@@ -14,16 +14,17 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 
-
 class ReservationController extends Controller
 {
     /**
      * @Route("/", name="reservation_list")
      * @Method({"GET"})
      */
-    public function index() {
+    public function index(Request $request) {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $all_reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+        $reservations = $paginator->paginate($all_reservations, $request->query->getInt('page', 1), 10);
 
         return $this->render('reserve/index.html.twig', [
             'reservations' => $reservations
