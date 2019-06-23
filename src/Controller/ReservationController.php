@@ -24,7 +24,14 @@ class ReservationController extends Controller
         $this->denyAccessUnlessGranted('ROLE_USER');
         $paginator  = $this->get('knp_paginator');
         $all_reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
-        $reservations = $paginator->paginate($all_reservations, $request->query->getInt('page', 1), 10);
+        $filtered_reservations = [];
+        foreach($all_reservations as $res) {
+            if ($res->getResDate()->format('m/d/y') >= date('m/d/y')) {
+                $filtered_reservations[] = $res;
+            }
+        }
+
+        $reservations = $paginator->paginate($filtered_reservations, $request->query->getInt('page', 1), 10);
 
         return $this->render('reserve/index.html.twig', [
             'reservations' => $reservations
