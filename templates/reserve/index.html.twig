@@ -35,12 +35,13 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="navigation">
+            {{ knp_pagination_render(reservations) }}
+        </div>
     {% else %}
         <p>No Reservations to Display</p>
     {% endif %}
-    <div class="navigation">
-        {{ knp_pagination_render(reservations) }}
-    </div>
+
 {% endblock %}
 
 {% block javascripts %}
