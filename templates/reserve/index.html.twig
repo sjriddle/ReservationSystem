@@ -2,7 +2,7 @@
 {% block title %} Reservation {% endblock %}
 
 {% block body %}
-    {% if reservations %}
+    {% if reservations|length > 0 %}
         <table id="reservations" class="table table-striped">
             <thead>
                 <tr>
