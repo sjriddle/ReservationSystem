@@ -40,6 +40,11 @@ class Reserve
     private $email;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $guest_count;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $res_date;
@@ -84,6 +89,14 @@ class Reserve
 
     public function setEmail($email) {
       $this->email = $email;
+    }
+
+    public function getGuestCount() {
+        return $this->guest_count;
+    }
+
+    public function setGuestCount($guest_count) {
+        $this->guest_count = $guest_count;
     }
 
     public function getResTime() {

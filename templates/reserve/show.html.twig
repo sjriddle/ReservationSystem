@@ -2,12 +2,16 @@
 {% block title %} Reservation {% endblock %}
 
 {% block body %}
-    <h2>Success!</h2>
-    <h4><strong>Reservation ID:</strong> {{ reservation.id }}</h4>
+    <h2>Reservation Details</h2>
+    <hr>
+    <h5><strong>Reservation ID:</strong> {{ reservation.id }}</h5>
     <li>Name: {{ reservation.firstname }} {{ reservation.lastname }}</li>
     <li>Email: {{ reservation.email }}</li>
+    <li>Number of Guests: {{ reservation.guestcount }}</li>
     <li>Reservation Date: {{ reservation.resdate|date('m/d/Y') }}</li>
-    <li>Reservation Time: {{ reservation.restime|date('H:i:s') }}</li>
+    <li>Reservation Time: {{ reservation.restime|date('h:i A') }}</li>
     <hr>
     <a href="/">Go Back</a>
+    <br>
+    <a href="/reserve/edit/{{ reservation.id }}">Edit Reservation</a>
 {% endblock %}

@@ -8,6 +8,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <div id="wrap">
         {{ include('inc/navbar.html.twig') }}
         <div class="container">
             {% block body %}{% endblock %}
@@ -16,5 +17,85 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% block javascripts %}{% endblock %}
+        </div></div>
     </body>
+
+
+    <footer id="uvu-footer" class="page-footer font-small blue pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <img id="uvu-img" src="/img/uvu-1942.png">
+                </div>
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-2 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">About UVU</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/visitors/history.html">History</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/president/">Office of the President</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/inclusion/">Inclusion & Diversity</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/news/">Newsroom</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/accreditation/">Accreditation</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Help</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/servicedesk/">Get Help</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/search/">Search</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/safety/emergency.php">Emergency</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/equalopportunity/titleix/">Title IX / Equal Opportunity</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/visitors/contact.html">Contact us</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/latinos/">Español</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/hr/">Employment</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/maps/">Maps</a>
+                        </li>
+                        <li>
+                            <a id="uvu-link" href="https://www.uvu.edu/supportuvu/">Give to UVU</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://www.uvu.edu">Utah Valley University</a>
+        </div>
+    </footer>
 </html>

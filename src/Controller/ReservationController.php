@@ -41,12 +41,14 @@ class ReservationController extends Controller
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
                 'required' => true,
+                'label' => 'First Name',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('last_name', TextType::class, [
                 'required' => true,
+                'label' => 'Last Name',
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -56,6 +58,13 @@ class ReservationController extends Controller
               'attr' => [
                 'class' => 'form-control'
               ]
+            ])
+            ->add('guest_count', IntegerType::class, [
+                'required' => true,
+                'label' => 'Number of Guests',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
@@ -124,12 +133,14 @@ class ReservationController extends Controller
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
                 'required' => true,
+                'label' => 'First Name',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('last_name', TextType::class, [
                 'required' => true,
+                'label' => 'Last Name',
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -139,6 +150,13 @@ class ReservationController extends Controller
               'attr' => [
                 'class' => 'form-control'
               ]
+            ])
+            ->add('guest_count', IntegerType::class, [
+                'required' => true,
+                'label' => 'Number of Guests',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('res_date', DateType::class, [
                 'label' => 'Reservation Date',
