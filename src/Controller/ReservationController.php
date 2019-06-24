@@ -26,7 +26,7 @@ class ReservationController extends Controller
         $all_reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
         $filtered_reservations = [];
         foreach($all_reservations as $res) {
-            if ($res->getResDate()->format('m/d/y') >= date('m/d/y')) {
+            if ($res->getResDate()->format('m/d/y') >= date('m/d/y', strtotime('-1 days'))) {
                 $filtered_reservations[] = $res;
             }
         }
