@@ -32,7 +32,6 @@ class ReservationController extends Controller
         }
 
         $reservations = $paginator->paginate($filtered_reservations, $request->query->getInt('page', 1), 10);
-
         return $this->render('reserve/index.html.twig', [
             'reservations' => $reservations
         ]);
@@ -45,7 +44,6 @@ class ReservationController extends Controller
      */
     public function new(Request $request, \Swift_Mailer $mailer) {
         $reservation = new Reserve();
-
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
                 'required' => true,
@@ -118,7 +116,6 @@ class ReservationController extends Controller
                 ->setBody($this->renderView('emails/confirmation.html.twig',
                     ['reservations' => $reservations]), 'text/html');
             $mailer->send($message);
-
             return $this->redirect('/reserve/'.$id);
         }
 
