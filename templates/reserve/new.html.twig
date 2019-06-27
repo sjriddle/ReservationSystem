@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        {{ form_start(form) }}
+        {{ form_start(form, { 'attr': {'class': 'needs-validation'} }) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
     </div>
@@ -29,8 +29,8 @@
 
 
 
-    <br>
-    <a href="/reserve/find">Edit existing reservation</a>
+<br>
+<a href="/reserve/find">Edit existing reservation</a>
 {% endblock %}
 
 {% block javascripts %}
