@@ -13,6 +13,14 @@ if (reservations) {
   });
 }
 
+var today = new Date();
+var cur_time = today.getHours() + ':' + today.getMinutes();
+console.log(document.getElementById('form_res_time').value);
+console.log(cur_time);
+if (document.getElementById('form_res_time').value < cur_time) {
+  console.log('test')
+}
+
 function findId() {
   var id = document.getElementById('find_id').value;
   fetch(`/reserve/edit/${id}`, {
