@@ -10,7 +10,6 @@
     {% if error %}
         <span class="error">{{ error.messageKey }}</span>
     {% endif %}
-
     <form action="{{ path('login') }}" method="POST">
         <div class="form-group">
             <input type="text" name="_username" value="{{ last_username }}" placeholder="Username">
