@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 class ReservationController extends Controller
@@ -42,8 +43,10 @@ class ReservationController extends Controller
      * @Route("/reserve/new", name="reservation_new")
      * @Method({"GET", "POST"})
      */
-    public function new(Request $request, \Swift_Mailer $mailer) {
+    public function new(Request $request, \Swift_Mailer $mailer, ValidatorInterface $validator) {
         $reservation = new Reserve();
+        $errors = $validator->validate($reservation);
+
         $form = $this->createFormBuilder($reservation)
             ->add('first_name', TextType::class, [
                 'required' => true,
@@ -69,7 +72,8 @@ class ReservationController extends Controller
                 'required' => true,
                 'label' => 'Number of Guests',
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'min' => 0
                 ]
             ])
             ->add('res_date', DateType::class, [
@@ -117,6 +121,10 @@ class ReservationController extends Controller
                     ['reservations' => $reservations]), 'text/html');
             $mailer->send($message);
             return $this->redirect('/reserve/'.$id);
+        } else if(count($errors) > 0) {
+            return $this->render('reserve/validation.html.twig', [
+               'errors' => $errors
+            ]);
         }
 
         return $this->render('reserve/new.html.twig', [
@@ -160,7 +168,8 @@ class ReservationController extends Controller
                 'required' => true,
                 'label' => 'Number of Guests',
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'min' => 0
                 ]
             ])
             ->add('res_date', DateType::class, [
