@@ -7,6 +7,10 @@ html, body {
     height: 100%;
 }
 
+.error {
+    color: red;
+}
+
 #contact-margin {
     margin-left: 100px;
 }
