@@ -23,5 +23,3 @@ function findId() {
 $('#form_res_time').datetimepicker({
   format : 'DD/MM/YYYY hh:mm A'
 });
-
-document.getElementById('form_res_date').value = Date();
