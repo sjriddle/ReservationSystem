@@ -20,6 +20,6 @@ function findId() {
   }).then(res => window.location = `/reserve/edit/${id}`);
 }
 
-$('#form_res_time').datetimepicker({
-  format : 'DD/MM/YYYY hh:mm A'
-});
+// $('#form_res_time').datetimepicker({
+//   format : 'DD/MM/YYYY hh:mm A'
+// });
