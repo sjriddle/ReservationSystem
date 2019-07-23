@@ -5,13 +5,23 @@
     <table id="items" class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
             {% for item in items %}
                 <tr>
-                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    {% if item.active == 0 %}
+                        <td>
+                            <a href="#" class="btn btn-success change-status" item-id="{{ item.id }}">Open</a>
+                        </td>
+                    {% else %}
+                        <td>
+                            <a href="#" class="btn btn-danger change-status" item-id="{{ item.id }}">Closed</a>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
