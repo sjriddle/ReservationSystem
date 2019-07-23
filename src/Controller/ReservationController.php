@@ -99,7 +99,7 @@ class ReservationController extends Controller
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isVaHIlid()) {
+        if($form->isSubmitted() && $form->isValid()) {
             $res_form = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();

@@ -13,14 +13,26 @@
             {% for item in items %}
                 <tr>
                     <td>{{ item.name }}</td>
-                    {% if item.active == 0 %}
-                        <td>
-                            <a href="#" class="btn btn-success change-status" item-id="{{ item.id }}">Open</a>
-                        </td>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if item.active == 0 %}
+                            <td>
+                                <a href="#" class="btn btn-success change-status" item-id="{{ item.id }}">Open</a>
+                            </td>
+                        {% else %}
+                            <td>
+                                <a href="#" class="btn btn-danger change-status" item-id="{{ item.id }}">Closed</a>
+                            </td>
+                        {% endif %}
                     {% else %}
-                        <td>
-                            <a href="#" class="btn btn-danger change-status" item-id="{{ item.id }}">Closed</a>
-                        </td>
+                        {% if item.active == 0 %}
+                            <td>
+                                <a href="#" class="btn btn-success">Open</a>
+                            </td>
+                        {% else %}
+                            <td>
+                                <a href="#" class="btn btn-danger">Closed</a>
+                            </td>
+                        {% endif %}
                     {% endif %}
                 </tr>
             {% endfor %}
