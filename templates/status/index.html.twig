@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %} Reservation {% endblock %}
+
+{% block body %}
+    <table id="items" class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
