@@ -1,5 +1,5 @@
 const reservations = document.getElementById('reservations');
-
+const items = document.getElementById('items');
 if (reservations) {
   reservations.addEventListener('click', (e) => {
     if (e.target.className === 'btn btn-danger delete-reservation') {
@@ -13,6 +13,22 @@ if (reservations) {
   });
 }
 
+if (items) {
+  items.addEventListener('click', (e) => {
+    if (e.target.className === 'btn btn-success change-status') {
+      const id = e.target.getAttribute('item-id');
+      fetch(`status/update/${id}`, {
+        method: 'POST'
+      }).then(res => window.location.reload())
+    } else if (e.target.className === 'btn btn-danger change-status') {
+      const id = e.target.getAttribute('item-id');
+      fetch(`status/update/${id}`, {
+        method: 'POST'
+      }).then(res => window.location.reload())
+    }
+  });
+}
+
 function findId() {
   var id = document.getElementById('find_id').value;
   fetch(`/reserve/edit/${id}`, {
@@ -20,6 +36,3 @@ function findId() {
   }).then(res => window.location = `/reserve/edit/${id}`);
 }
 
-// $('#form_res_time').datetimepicker({
-//   format : 'DD/MM/YYYY hh:mm A'
-// });

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %} Reservation {% endblock %}
+
+{% block body %}
+    <table id="items" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if item.active == 0 %}
+                            <td>
+                                <a href="#" class="btn btn-success change-status" item-id="{{ item.id }}">Open</a>
+                            </td>
+                        {% else %}
+                            <td>
+                                <a href="#" class="btn btn-danger change-status" item-id="{{ item.id }}">Closed</a>
+                            </td>
+                        {% endif %}
+                    {% else %}
+                        {% if item.active == 0 %}
+                            <td>
+                                <a href="#" class="btn btn-success">Open</a>
+                            </td>
+                        {% else %}
+                            <td>
+                                <a href="#" class="btn btn-danger">Closed</a>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
