@@ -113,9 +113,11 @@ class ReservationController extends Controller
             $datetime->setTimezone($timezone);
 
 
-            if ($res_time->format('h:i A') < $datetime->format('h:i A')) {
+            if ($res_form->getResDate()->format('m/d/y') <= date('m/d/y') &&
+                $res_time->format('h:i A') < $datetime->format('h:i A')) {
                 return $this->redirectToRoute('reservation_time');
-            } else if ($res_time->format('h:i A') < $previous_hour->format('h:i A')) {
+            } else if ($res_form->getResDate()->format('m/d/y') <= date('m/d/y') &&
+                $res_time->format('h:i A') < $previous_hour->format('h:i A')) {
                 return $this->redirectToRoute('reservation_time');
             }
 
