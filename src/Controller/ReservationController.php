@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Reserve;
+use MongoDB\BSON\UTCDateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use DateTimeZone;
 
 
 class ReservationController extends Controller
@@ -100,7 +102,24 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+
             $res_form = $form->getData();
+            $res_time = $res_form->getResTime();
+
+            $datetime = new \DateTime();
+            $previous_hour = new \DateTime('+1 hours');
+            $timezone = new DateTimeZone('America/Denver');
+            $previous_hour->setTimezone($timezone);
+            $datetime->setTimezone($timezone);
+
+
+            if ($res_form->getResDate()->format('m/d/y') <= date('m/d/y') &&
+                $res_time->format('h:i A') < $datetime->format('h:i A')) {
+                return $this->redirectToRoute('reservation_time');
+            } else if ($res_form->getResDate()->format('m/d/y') <= date('m/d/y') &&
+                $res_time->format('h:i A') < $previous_hour->format('h:i A')) {
+                return $this->redirectToRoute('reservation_time');
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($res_form);
@@ -211,6 +230,17 @@ class ReservationController extends Controller
         return $this->render('reserve/error.html.twig', [
             'reservations' => $reservations
         ]);
+    }
+
+    /**
+     * @Route("/reserve/time", name="reservation_time")
+     * @Method({"GET"})
+     */
+    public function time() {
+      $reservations = $this->getDoctrine()->getRepository(Reserve::class)->findAll();
+      return $this->render('reserve/time.html.twig', [
+        'reservations' => $reservations
+      ]);
     }
 
     /**

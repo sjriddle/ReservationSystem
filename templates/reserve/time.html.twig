@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %} Error {% endblock %}
+
+{% block body %}
+    <h1>This reservation time is invalid.</h1><hr>
+    <h4>The reservation time must be made at least an hour before the current time.</h4>
+    <a href="/reserve/find">Find Reservation</a><br>
+    <a href="/reserve/new">New Reservation</a>
+{% endblock %}
