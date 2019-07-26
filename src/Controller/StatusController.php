@@ -24,6 +24,7 @@ class StatusController extends Controller
         ]);
     }
 
+    
   /**
    * @Route("/status/update/{id}")
    * @Method({"POST"})
