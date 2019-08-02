@@ -102,7 +102,6 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-
             $res_form = $form->getData();
             $res_time = $res_form->getResTime();
 
