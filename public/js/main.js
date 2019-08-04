@@ -1,5 +1,6 @@
 const reservations = document.getElementById('reservations');
 const items = document.getElementById('items');
+
 if (reservations) {
   reservations.addEventListener('click', (e) => {
     if (e.target.className === 'btn btn-danger delete-reservation') {
